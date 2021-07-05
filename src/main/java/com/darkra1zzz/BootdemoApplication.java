@@ -15,6 +15,10 @@ public class BootdemoApplication {
         return "hello SpringBoot";
     }
 
+    @RequestMapping("hello2")
+    public String tohello2(){
+        return "hello2";
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(BootdemoApplication.class, args);
