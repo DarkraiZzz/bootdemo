@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script th:src="@{js/myjs.js}"></script>
+    <link th:href="@{css/mycss.css}" rel="stylesheet">
 </head>
 <body>
-hello templates
+<img src="images/img1.png">
+<img th:src="@{images/img1.png}"><br>
+<span th:text="${msg}">测试数据</span><br>
+<span th:text="'拼接方式一'+${msg}+'!'">拼接文字一</span><br>
+<span th:text="|拼接方式二:${msg}!|">拼接文字二</span><br>
+<p th:text="${msg}">我是一个段落</p><br>
+<h1 th:text="${msg}">我是一号字体</h1><br>
+<table border="1">
+    <tr>
+        <td th:text="${msg}">我是表格里的文字</td>
+    </tr>
+</table>
+<input th:value="${msg}" value="卢卡利欧"><br>
+<span th:each="str:${list}" th:text="${str}">span循环</span><br>
+<div th:each="str:${list}" th:text="${str}">div循环</div>
+<table border="1">
+    <tr>
+        <td>内容</td>
+        <td>index</td>
+        <td>count</td>
+        <td>size</td>
+        <td>even</td>
+        <td>odd</td>
+        <td>first</td>
+        <td>last</td>
+    </tr>
+    <tr th:each="str,mystate:${list}">
+        <td th:text="${str}">内容</td>
+        <td th:text="${mystate.index}">index</td>
+        <td th:text="${mystate.count}">count</td>
+        <td th:text="${mystate.size}">size</td>
+        <td th:text="${mystate.even}">even</td>
+        <td th:text="${mystate.odd}">odd</td>
+        <td th:text="${mystate.first}">first</td>
+        <td th:text="${mystate.last}">last</td>
+    </tr>
+</table>
+<table border="1">
+    <tr>
+        <td>编号</td>
+        <td>name</td>
+        <td>age</td>
+    </tr>
+    <tr th:each="user,mystate:${userList}">
+        <td th:text="${mystate.index}">编号</td>
+        <td th:text="${user.name}">name</td>
+        <td th:text="${user.age}">age</td>
+    </tr>
+</table>
+<span th:if="${user.age<1000}" th:text="小了"></span>
+<span th:if="${user.age>1000}" th:text="大了"></span>
+<span th:if="${user.age==1000}" th:text="刚好"></span>
 </body>
 </html>
